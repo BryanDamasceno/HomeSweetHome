@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#===============================NMAP===============================
 checkCommand=$(which nmap)
 checkCommand="$checkCommand"
 
@@ -10,6 +11,7 @@ else
         echo nmap already installed
 fi
 
+#===============================GO LANGUAGE===============================
 checkCommand=$(which go)
 checkCommand="$checkCommand"
 
@@ -23,6 +25,7 @@ else
         echo go already installed
 fi
 
+#===============================WAFW00F===============================
 checkCommand=$(which wafw00f)
 checkCommand="$checkCommand"
 
@@ -35,6 +38,7 @@ else
         echo wafw00f already installed
 fi
 
+#===============================GO BUSTER===============================
 checkCommand=$(which gobuster)
 checkCommand="$checkCommand"
 
