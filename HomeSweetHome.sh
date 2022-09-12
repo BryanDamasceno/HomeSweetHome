@@ -73,4 +73,15 @@ else
         echo ffuf already installed
 fi
 
+#===============================NUCLEI===============================
+checkCommand=$(which ffuf)
+checkCommand="$checkCommand"
+
+if [ "$checkCommand" == "" ]; then
+        go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest >/dev/null
+
+else
+        echo nuclei already installed
+fi
+
 cp ~/go/bin/* /usr/bin

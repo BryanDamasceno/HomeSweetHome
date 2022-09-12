@@ -8,6 +8,7 @@ Tools:
 - Nmap
 - Gobuster
 - WafW00f
-- fuff
+- Fuff
+- Nuclei
 
 The number of tools will increase.
