@@ -10,5 +10,6 @@ Tools:
 - WafW00f
 - Fuff
 - Nuclei
+- Exploit DB
 
 The number of tools will increase.
