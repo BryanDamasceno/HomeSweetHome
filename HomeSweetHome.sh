@@ -1,6 +1,7 @@
 #!/bin/bash
 
 blue='\033[0;34m'
+userInput=""
 
 echo -e "${blue}
 
@@ -21,6 +22,7 @@ menu() {
         echo "[7]Subfinder      [8]Metasploit           [9]Nuclei"
         echo ""
         read -p "Select an option: " input
+        userInput="$input"
 }
 
 #===============================NMAP===============================
@@ -63,6 +65,20 @@ installGo() {
                 echo go already installed
         fi
 }
+
+#===============================SUBFINDER===============================
+installSubfinder() {
+        checkCommand=$(which subfinder)
+        checkCommand="$checkCommand"
+
+        if [ "$checkCommand" == "" ]; then
+                go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest >/dev/null
+
+        else
+                echo subfinder already installed
+        fi
+}
+
 #===============================WAFW00F===============================
 installWafw00f() {
         checkCommand=$(which wafw00f)
@@ -127,6 +143,48 @@ installExploitDB() {
         fi
 }
 
+#===============================METASPLOIT===============================
+installMetasploit() {
+        checkCommand=$(which msfconsole)
+        checkCommand="$checkCommand"
+
+        if [ "$checkCommand" == "" ]; then
+                curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb >msfinstall &&
+                        chmod 755 msfinstall &&
+                        ./msfinstall
+
+        else
+                echo msfconsole already installed
+        fi
+}
+
 menu
+
+case $userInput in
+"1") installNmap ;;
+"2") installWafw00f ;;
+"3") installFfuf ;;
+"4") installGo ;;
+"5") installExploitDB ;;
+"6") installGobuster ;;
+"7") installSubfinder ;;
+"8") installMetasploit ;;
+"9") installNuclei ;;
+"10")
+        installNmap
+        installGo
+        installExploitDB
+        installNuclei
+        installWafw00f
+        installFfuf
+        installMetasploit
+        installGobuster
+        installSubfinder
+        ;;
+*)
+        echo "Not a valid argument"
+        echo
+        ;;
+esac
 
 cp ~/go/bin/* /usr/bin
