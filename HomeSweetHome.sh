@@ -17,9 +17,9 @@ echo -e "${blue}
 "
 
 menu() {
-        echo "[1]Nmap           [2]Wafw00f              [3]Ffuf         [10] All tools"
-        echo "[4]Go             [5]ExploitDB            [6]Gobuster"
-        echo "[7]Subfinder      [8]Metasploit           [9]Nuclei"
+        echo "[1]Nmap           [2]Wafw00f              [3]Ffuf         [10] Ruby"
+        echo "[4]Go             [5]ExploitDB            [6]Gobuster     [11] Wpscan"
+        echo "[7]Subfinder      [8]Metasploit           [9]Nuclei       [12] All tools"
         echo ""
         read -p "Select an option: " input
         userInput="$input"
@@ -158,6 +158,33 @@ installMetasploit() {
         fi
 }
 
+#===============================RUBY===============================
+installRuby() {
+        checkCommand=$(which ruby)
+        checkCommand="$checkCommand"
+
+        if [ "$checkCommand" == "" ]; then
+                sudo apt-get install ruby-full
+
+        else
+                echo ruby already installed
+        fi
+}
+
+#===============================WPSCAN===============================
+installWpscan() {
+        checkCommand=$(which wpscan)
+        checkCommand="$checkCommand"
+
+        if [ "$checkCommand" == "" ]; then
+                sudo apt-get install build-essential autoconf
+                sudo gem install wpscan
+
+        else
+                echo wpscan already installed
+        fi
+}
+
 menu
 
 case $userInput in
@@ -170,9 +197,12 @@ case $userInput in
 "7") installSubfinder ;;
 "8") installMetasploit ;;
 "9") installNuclei ;;
-"10")
+"10") installRuby ;;
+"11") installWpscan ;;
+"12")
         installNmap
         installGo
+        installRuby
         installExploitDB
         installNuclei
         installWafw00f
@@ -180,7 +210,9 @@ case $userInput in
         installMetasploit
         installGobuster
         installSubfinder
+        installWpscan
         ;;
+
 *)
         echo "Not a valid argument"
         echo
