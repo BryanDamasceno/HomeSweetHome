@@ -17,9 +17,10 @@ echo -e "${blue}
 "
 
 menu() {
-        echo "[1]Nmap           [2]Wafw00f              [3]Ffuf         [10] Ruby"
-        echo "[4]Go             [5]ExploitDB            [6]Gobuster     [11] Wpscan"
-        echo "[7]Subfinder      [8]Metasploit           [9]Nuclei       [12] All tools"
+        echo "[1]Nmap           [2]Wafw00f              [3]Ffuf"
+        echo "[4]Go             [5]ExploitDB            [6]Gobuster"
+        echo "[7]Subfinder      [8]Metasploit           [9]Nuclei"
+        echo "[10] Ruby         [11] Wpscan             [12] All tools"
         echo ""
         read -p "Select an option: " input
         userInput="$input"
