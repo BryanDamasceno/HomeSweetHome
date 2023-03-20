@@ -20,7 +20,7 @@ menu() {
         echo "[1]Nmap           [2]Wafw00f              [3]Ffuf"
         echo "[4]Go             [5]ExploitDB            [6]Gobuster"
         echo "[7]Subfinder      [8]Metasploit           [9]Nuclei"
-        echo "[10] Ruby         [11] Wpscan             [12] All tools"
+        echo "[10]Ruby          [11]Wpscan              [12]All tools"
         echo ""
         read -p "Select an option: " input
         userInput="$input"
@@ -86,7 +86,7 @@ installWafw00f() {
         checkCommand="$checkCommand"
 
         if [ "$checkCommand" == "" ]; then
-                git clone git@github.com:EnableSecurity/wafw00f.git >/dev/null
+                git clone https://github.com/EnableSecurity/wafw00f.git >/dev/null
                 cd wafw00f
                 python3 setup.py install >/dev/null
 
